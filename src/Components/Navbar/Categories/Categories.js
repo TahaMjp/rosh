@@ -7,7 +7,7 @@ const Categories = () => {
 
   return (
     <div className="flex p-2 gap-x-4">
-      {value.map((elem, index) => {
+      {value.categories.map((elem, index) => {
         return <Category key={index} category={elem} />;
       })}
     </div>

@@ -2,7 +2,7 @@ import Image from "../../Images/TahaMajlesi.jpg";
 
 const Footer = () => {
   return (
-    <div className="bg-red-400 flex w-full fixed bottom-0 justify-between p-2 font-semibold">
+    <div className="bg-red-400 flex w-full relative bottom-0 justify-between p-2 font-semibold">
       <a
         className="w-3/12 flex tracking-wide border-2 border-black hover:text-white hover:bg-black bg-white"
         href="https://github.com/TahaMjp"
