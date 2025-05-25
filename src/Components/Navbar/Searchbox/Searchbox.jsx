@@ -3,7 +3,7 @@ import Searchinp from "./Searchinp/Searchinp";
 
 const Searchbox = () => {
   return (
-    <div className="w-full bg-yellow-400 flex p-2 justify-between">
+    <div className="w-full flex p-2 justify-between">
       <Searchinp />
       <Github />
     </div>
