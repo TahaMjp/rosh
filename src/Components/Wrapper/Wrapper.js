@@ -1,15 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import Container from "../Container/Container";
-
+import Root from "../Root/Root";
+import Home from "../Root/Home/Home";
 const Wrapper = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Container />} />
+          <Route path="/" element={<Root />} />
+          <Route index element={<Home />} />
+          <Route />
         </Routes>
         <Footer />
       </BrowserRouter>
