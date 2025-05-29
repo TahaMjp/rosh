@@ -3,6 +3,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import Root from "../Root/Root";
 import Home from "../Root/Home/Home";
+import Pagination from "../Pagination/Pagination";
 const Wrapper = () => {
   return (
     <>
@@ -13,6 +14,7 @@ const Wrapper = () => {
           <Route index element={<Home />} />
           <Route />
         </Routes>
+        <Pagination />
         <Footer />
       </BrowserRouter>
     </>

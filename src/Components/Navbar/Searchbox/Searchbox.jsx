@@ -1,11 +1,11 @@
-import Github from "./Github/Githubbtn";
+import FiltersBtn from "./FiltersBtn/FiltersBtn";
 import Searchinp from "./Searchinp/Searchinp";
 
 const Searchbox = () => {
   return (
     <div className="w-full flex p-2 justify-between">
       <Searchinp />
-      <Github />
+      <FiltersBtn />
     </div>
   );
 };

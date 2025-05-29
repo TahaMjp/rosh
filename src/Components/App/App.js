@@ -8,6 +8,13 @@ export const dataContext = createContext(null);
 const App = () => {
   const [categories, setCategories] = useState([]);
   const [photos, setPhotos] = useState([]);
+  const [parameters, setParameters] = useState({
+    query: "",
+    topic: "",
+    page: 1,
+    perPage: 10,
+    orderBy: "latest",
+  });
 
   const fetchCategories = async () => {
     try {
@@ -25,7 +32,7 @@ const App = () => {
   const fetchPhoto = async () => {
     try {
       const data = await fetch(
-        `https://api.unsplash.com/photos/?client_id=${key}`
+        `https://api.unsplash.com/photos/?client_id=${key}&page=${parameters.page}&per_page=${parameters.perPage}`
       );
       const res = await data.json();
       const photoData = res.map((elem) => ({
@@ -43,10 +50,12 @@ const App = () => {
   useEffect(() => {
     fetchCategories();
     fetchPhoto();
-  }, []);
+  }, [parameters]);
 
   return (
-    <dataContext.Provider value={{ categories, photos }}>
+    <dataContext.Provider
+      value={{ categories, photos, setParameters, parameters }}
+    >
       <Wrapper />
     </dataContext.Provider>
   );
