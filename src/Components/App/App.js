@@ -4,7 +4,7 @@ import Wrapper from "../Wrapper/Wrapper";
 
 const key = "SuC_yiyvIn01AbreK2D3npVFAzNWEVK_Vuxa4ezh-R4";
 
-export const dataContext = createContext({});
+export const dataContext = createContext(null);
 const App = () => {
   const [categories, setCategories] = useState([]);
   const [photos, setPhotos] = useState([]);
@@ -15,9 +15,8 @@ const App = () => {
         `https://api.unsplash.com/topics/?client_id=${key}`
       );
       const res = await data.json();
-      res.map((elem) => {
-        return setCategories((perv) => perv, categories.push(elem.slug));
-      });
+      const categorySlugs = res.map((elem) => elem.slug);
+      setCategories(categorySlugs);
     } catch (err) {
       console.log(err);
     }
@@ -29,15 +28,14 @@ const App = () => {
         `https://api.unsplash.com/photos/?client_id=${key}`
       );
       const res = await data.json();
-      res.map((elem) => {
-        return setPhotos(
-          photos.push({
-            userName: elem.user.name,
-            userPic: elem.user.profile_image.large,
-            userLink: elem.user.links.self,
-          })
-        );
-      });
+      const photoData = res.map((elem) => ({
+        userName: elem.user.name,
+        userPic: elem.user.profile_image.large,
+        userLink: elem.user.links.html,
+        photoUrl: elem.urls.regular,
+        photoAlt: elem.description || "No description", // fallback
+      }));
+      setPhotos(photoData);
     } catch (err) {
       console.log(err);
     }

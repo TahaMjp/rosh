@@ -3,7 +3,7 @@ import Searchbox from "./Searchbox/Searchbox";
 
 const Navbar = () => {
   return (
-    <div className="flex flex-col w-full sticky top-0 bg-gray-500 z-10">
+    <div className="flex flex-col w-full sticky top-0 bg-white z-10">
       <Searchbox />
       <Categories />
     </div>
