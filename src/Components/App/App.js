@@ -12,7 +12,7 @@ const App = () => {
     query: "",
     topic: "",
     page: 1,
-    perPage: 10,
+    perPage: 12,
     orderBy: "latest",
   });
 
@@ -40,17 +40,60 @@ const App = () => {
         userPic: elem.user.profile_image.large,
         userLink: elem.user.links.html,
         photoUrl: elem.urls.regular,
-        photoAlt: elem.description || "No description", // fallback
+        photoAlt: elem.description || "No description",
       }));
       setPhotos(photoData);
     } catch (err) {
       console.log(err);
     }
   };
+
+  const fetchTopicPhoto = async () => {
+    try {
+      const data = await fetch(
+        `https://api.unsplash.com/topics/${parameters.topic}/photos?client_id=${key}&page=${parameters.page}&per_page=${parameters.perPage}`
+      );
+      const res = await data.json();
+      const photoData = res.map((elem) => ({
+        userName: elem.user.name,
+        userPic: elem.user.profile_image.large,
+        userLink: elem.user.links.html,
+        photoUrl: elem.urls.regular,
+        photoAlt: elem.description || "No description",
+      }));
+      setPhotos(photoData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     fetchCategories();
-    fetchPhoto();
-  }, [parameters]);
+  }, []);
+
+  // Reset page to 1 if certain parameters change
+  useEffect(() => {
+    setParameters((prev) => {
+      if (prev.page !== 1) {
+        return { ...prev, page: 1 };
+      }
+      return prev;
+    });
+  }, [
+    parameters.query,
+    parameters.topic,
+    parameters.orderBy,
+    parameters.perPage,
+  ]);
+
+  // Fetch photos according to topic or default
+  useEffect(() => {
+    if (parameters.topic !== "") {
+      fetchTopicPhoto();
+    } else {
+      fetchPhoto();
+    }
+  }, [parameters.page, parameters.topic, parameters.perPage]);
 
   return (
     <dataContext.Provider
