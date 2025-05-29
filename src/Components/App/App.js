@@ -32,7 +32,7 @@ const App = () => {
   const fetchPhoto = async () => {
     try {
       const data = await fetch(
-        `https://api.unsplash.com/photos/?client_id=${key}&page=${parameters.page}&per_page=${parameters.perPage}`
+        `https://api.unsplash.com/photos/?client_id=${key}&page=${parameters.page}&per_page=${parameters.perPage}&order_by=${parameters.orderBy}`
       );
       const res = await data.json();
       const photoData = res.map((elem) => ({
@@ -51,10 +51,29 @@ const App = () => {
   const fetchTopicPhoto = async () => {
     try {
       const data = await fetch(
-        `https://api.unsplash.com/topics/${parameters.topic}/photos?client_id=${key}&page=${parameters.page}&per_page=${parameters.perPage}`
+        `https://api.unsplash.com/topics/${parameters.topic}/photos?client_id=${key}&page=${parameters.page}&per_page=${parameters.perPage}&order_by=${parameters.orderBy}`
       );
       const res = await data.json();
       const photoData = res.map((elem) => ({
+        userName: elem.user.name,
+        userPic: elem.user.profile_image.large,
+        userLink: elem.user.links.html,
+        photoUrl: elem.urls.regular,
+        photoAlt: elem.description || "No description",
+      }));
+      setPhotos(photoData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchSearch = async () => {
+    try {
+      const data = await fetch(
+        `https://api.unsplash.com/search/photos?client_id=${key}&page=${parameters.page}&per_page=${parameters.perPage}&query=${parameters.query}&order_by=${parameters.orderBy}`
+      );
+      const res = await data.json();
+      const photoData = res.results.map((elem) => ({
         userName: elem.user.name,
         userPic: elem.user.profile_image.large,
         userLink: elem.user.links.html,
@@ -94,6 +113,14 @@ const App = () => {
       fetchPhoto();
     }
   }, [parameters.page, parameters.topic, parameters.perPage]);
+
+  useEffect(() => {
+    if (parameters.query !== "") {
+      fetchSearch();
+    } else {
+      fetchPhoto();
+    }
+  }, [parameters.page, parameters.topic, parameters.perPage, parameters.query]);
 
   return (
     <dataContext.Provider
