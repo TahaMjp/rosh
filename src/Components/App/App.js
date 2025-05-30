@@ -5,6 +5,7 @@ import Wrapper from "../Wrapper/Wrapper";
 const key = "SuC_yiyvIn01AbreK2D3npVFAzNWEVK_Vuxa4ezh-R4";
 
 export const dataContext = createContext(null);
+
 const App = () => {
   const [categories, setCategories] = useState([]);
   const [photos, setPhotos] = useState({
@@ -113,10 +114,14 @@ const App = () => {
         photoUrl: elem.urls.regular,
         photoAlt: elem.description || "No description",
       }));
-      setPhotos((prev) => ({
-        ...prev,
-        searchPhotos: photoData,
-      }));
+      if (photoData.length === 0) {
+        alert("No results found for your search.");
+      } else {
+        setPhotos((prev) => ({
+          ...prev,
+          searchPhotos: photoData,
+        }));
+      }
     } catch (err) {
       console.log(err);
     }

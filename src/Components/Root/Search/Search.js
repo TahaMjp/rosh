@@ -7,9 +7,10 @@ const Search = () => {
 
   return (
     <div className="w-full columns-3 gap-3 p-2">
-      {value.photos.searchPhotos.map((elem, index) => {
-        return <ImageComponent data={elem} key={index} />;
-      })}
+      {value.photos.searchPhotos.length !== 0 &&
+        value.photos.searchPhotos.map((elem, index) => {
+          return <ImageComponent data={elem} key={index} />;
+        })}
     </div>
   );
 };

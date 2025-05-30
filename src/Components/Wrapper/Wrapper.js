@@ -18,6 +18,7 @@ const Wrapper = () => {
           <Route path="/topic/:slug" element={[<Topic />, <Pagination />]} />
           <Route path="/random" element={[<Random />, <Pagination />]} />
           <Route path="/search" element={[<Search />, <Pagination />]} />
+          <Route path="/search/:slug" element={[<Search />, <Pagination />]} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
 

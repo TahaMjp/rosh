@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { dataContext } from "../../../App/App";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Searchinp = () => {
   const { setParameters } = useContext(dataContext);
+  const Navigate = useNavigate();
 
   const sendData = () => {
     const searchVal = document.getElementById("SearchInp").value;
@@ -12,6 +13,7 @@ const Searchinp = () => {
       return;
     } else {
       setParameters((prev) => ({ ...prev, query: searchVal }));
+      Navigate(`/search/${searchVal}`);
     }
   };
   return (
@@ -28,13 +30,12 @@ const Searchinp = () => {
           }
         }}
       />
-      <Link
+      <button
         className="border-2 border-black py-1 px-2 tracking-wide font-semibold mx-2 hover:bg-black hover:text-white cursor-pointer"
         onClick={sendData}
-        to={"/search"}
       >
         Search
-      </Link>
+      </button>
     </div>
   );
 };

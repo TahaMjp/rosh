@@ -10,7 +10,6 @@
     --color-red-400: oklch(70.4% 0.191 22.216);
     --color-blue-400: oklch(70.7% 0.165 254.624);
     --color-violet-400: oklch(70.2% 0.183 293.541);
-    --color-violet-600: oklch(54.1% 0.281 293.009);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -18,8 +17,6 @@
     --text-base--line-height: calc(1.5 / 1);
     --text-lg: 1.125rem;
     --text-lg--line-height: calc(1.75 / 1.125);
-    --text-xl: 1.25rem;
-    --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
     --text-5xl: 3rem;
@@ -202,9 +199,6 @@
   .mx-auto {
     margin-inline: auto;
   }
-  .my-3 {
-    margin-block: calc(var(--spacing) * 3);
-  }
   .my-4 {
     margin-block: calc(var(--spacing) * 4);
   }
@@ -308,9 +302,6 @@
   }
   .bg-black {
     background-color: var(--color-black);
-  }
-  .bg-blue-400 {
-    background-color: var(--color-blue-400);
   }
   .bg-red-400 {
     background-color: var(--color-red-400);
