@@ -7,7 +7,12 @@ const key = "SuC_yiyvIn01AbreK2D3npVFAzNWEVK_Vuxa4ezh-R4";
 export const dataContext = createContext(null);
 const App = () => {
   const [categories, setCategories] = useState([]);
-  const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState({
+    homePhotos: [],
+    topicPhotos: [],
+    searchPhotos: [],
+    randomPhotos: [],
+  });
   const [parameters, setParameters] = useState({
     query: "",
     topic: "",
@@ -42,7 +47,32 @@ const App = () => {
         photoUrl: elem.urls.regular,
         photoAlt: elem.description || "No description",
       }));
-      setPhotos(photoData);
+      setPhotos((prev) => ({
+        ...prev,
+        homePhotos: photoData,
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchRandom = async () => {
+    try {
+      const data = await fetch(
+        `https://api.unsplash.com/photos/random?client_id=${key}&count=${parameters.perPage}`
+      );
+      const res = await data.json();
+      const photoData = res.map((elem) => ({
+        userName: elem.user.name,
+        userPic: elem.user.profile_image.large,
+        userLink: elem.user.links.html,
+        photoUrl: elem.urls.regular,
+        photoAlt: elem.description || "No description",
+      }));
+      setPhotos((prev) => ({
+        ...prev,
+        randomPhotos: photoData,
+      }));
     } catch (err) {
       console.log(err);
     }
@@ -61,7 +91,10 @@ const App = () => {
         photoUrl: elem.urls.regular,
         photoAlt: elem.description || "No description",
       }));
-      setPhotos(photoData);
+      setPhotos((prev) => ({
+        ...prev,
+        topicPhotos: photoData,
+      }));
     } catch (err) {
       console.log(err);
     }
@@ -80,7 +113,10 @@ const App = () => {
         photoUrl: elem.urls.regular,
         photoAlt: elem.description || "No description",
       }));
-      setPhotos(photoData);
+      setPhotos((prev) => ({
+        ...prev,
+        searchPhotos: photoData,
+      }));
     } catch (err) {
       console.log(err);
     }
@@ -110,6 +146,7 @@ const App = () => {
     if (parameters.topic !== "") {
       fetchTopicPhoto();
     } else {
+      fetchRandom();
       fetchPhoto();
     }
   }, [parameters.page, parameters.topic, parameters.perPage]);
@@ -118,13 +155,14 @@ const App = () => {
     if (parameters.query !== "") {
       fetchSearch();
     } else {
+      fetchRandom();
       fetchPhoto();
     }
   }, [parameters.page, parameters.topic, parameters.perPage, parameters.query]);
 
   return (
     <dataContext.Provider
-      value={{ categories, photos, setParameters, parameters }}
+      value={{ categories, photos, setParameters, parameters, fetchRandom }}
     >
       <Wrapper />
     </dataContext.Provider>

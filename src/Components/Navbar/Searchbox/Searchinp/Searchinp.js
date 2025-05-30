@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { dataContext } from "../../../App/App";
+import { Link } from "react-router-dom";
 
 const Searchinp = () => {
   const { setParameters } = useContext(dataContext);
@@ -27,12 +28,13 @@ const Searchinp = () => {
           }
         }}
       />
-      <button
+      <Link
         className="border-2 border-black py-1 px-2 tracking-wide font-semibold mx-2 hover:bg-black hover:text-white cursor-pointer"
         onClick={sendData}
+        to={"/search"}
       >
         Search
-      </button>
+      </Link>
     </div>
   );
 };

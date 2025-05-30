@@ -1,18 +1,23 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import Root from "../Root/Root";
 import Home from "../Root/Home/Home";
 import Pagination from "../Pagination/Pagination";
 import NotFound from "../NotFound/NotFound";
+import Topic from "../Root/Topic/Topic";
+import Search from "../Root/Search/Search";
+import Random from "../Root/Random/Random";
 const Wrapper = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Root />} />
-          <Route index element={[<Home />, <Pagination />]} />
+          <Route path="/" element={[<Home />, <Pagination />]} />
+          <Route path="/topic" element={[<Random />, <Pagination />]} />
+          <Route path="/topic/:slug" element={[<Topic />, <Pagination />]} />
+          <Route path="/random" element={[<Random />, <Pagination />]} />
+          <Route path="/search" element={[<Search />, <Pagination />]} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
 
