@@ -5,15 +5,14 @@ import { useNavigate } from "react-router-dom";
 const Searchinp = () => {
   const { setParameters } = useContext(dataContext);
   const Navigate = useNavigate();
-
+  const SearchElement = document.getElementById("SearchInp");
   const sendData = () => {
-    const searchVal = document.getElementById("SearchInp").value;
-    if (searchVal.trim() === "") {
+    if (SearchElement.value.trim() === "") {
       alert("Please enter a search term.");
       return;
     } else {
-      setParameters((prev) => ({ ...prev, query: searchVal }));
-      Navigate(`/search/${searchVal}`);
+      setParameters((prev) => ({ ...prev, query: SearchElement.value }));
+      Navigate(`/search/${SearchElement.value}`);
     }
   };
   return (
@@ -28,6 +27,9 @@ const Searchinp = () => {
           if (e.key === "Enter") {
             sendData();
           }
+        }}
+        onFocus={() => {
+          SearchElement.value = "";
         }}
       />
       <button

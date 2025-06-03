@@ -7,6 +7,7 @@ import NotFound from "../NotFound/NotFound";
 import Topic from "../Root/Topic/Topic";
 import Search from "../Root/Search/Search";
 import Random from "../Root/Random/Random";
+import Settings from "../Root/Settings/Settings";
 const Wrapper = () => {
   return (
     <>
@@ -19,6 +20,8 @@ const Wrapper = () => {
           <Route path="/random" element={[<Random />, <Pagination />]} />
           <Route path="/search" element={[<Search />, <Pagination />]} />
           <Route path="/search/:slug" element={[<Search />, <Pagination />]} />
+          <Route path="/Settings" element={<Settings />} />
+
           <Route path="/*" element={<NotFound />} />
         </Routes>
 
