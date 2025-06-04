@@ -88,6 +88,7 @@ const Settings = () => {
                 name="perPage"
                 id="perPage"
                 className="p-2 border-y-2 border-black grow"
+                max={30}
                 defaultValue={
                   parameters.perPage === "" ? "empty" : parameters.perPage
                 }
