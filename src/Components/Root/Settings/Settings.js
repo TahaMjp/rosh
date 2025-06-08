@@ -193,71 +193,97 @@ const Settings = () => {
             </Link>
           </div>
         </div>
-        <p className="text-2xl mx-auto capitalize my-8">
-          you can change all the parameters from here
+        <p className="text-2xl mx-auto capitalize my-8 text-center">
+          Use this guide to explore different sections of the site and discover
+          beautiful photos tailored to your interests.
         </p>
         <div className="flex flex-col w-full gap-y-6">
-          <div className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black">
+          <Link
+            className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black"
+            to={"/"}
+          >
             <p className="text-xl">Homepage [ / ]</p>
             <p>
-              This is the main page of the site. It shows a collection of
-              general photos and includes pagination so users can browse through
-              multiple pages of content.
+              Browse a wide collection of photos from all over. Scroll through
+              pages and discover something new every time.
             </p>
-          </div>
-          <div className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black">
+          </Link>
+          <Link
+            className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black"
+            to={"/topic"}
+          >
             <p className="text-xl">All Topics – Random Mix [ /topic ]</p>
             <p>
-              This page shows photos randomly selected from various topics.
-              Great for discovering new things or just getting inspired.
+              Want random photos from a mix of categories? This page shows you a
+              variety of themed images — perfect if you’re just browsing or
+              looking for inspiration.
             </p>
-          </div>
-          <div className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black">
+          </Link>
+          <Link
+            className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black"
+            to={`/topic/${parameters.topic}`}
+          >
             <p className="text-xl">Specific Topic Page [ /topic/:slug ]</p>
             <p>
-              This shows photos related to a single, specific topic. <br />{" "}
-              Example URLs: <br />[ /topic/love ] == shows photos about love{" "}
-              <br />[ /topic/self-esteem ] == shows photos about self-esteem
+              Looking for something specific? Use this route to view photos from
+              a specific topic. <br /> Example URLs: <br />[ /topic/love ] ==
+              shows photos about love <br />[ /topic/self-esteem ] == shows
+              photos about self-esteem
             </p>
-          </div>
-          <div className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black">
+          </Link>
+          <Link
+            className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black"
+            to={"/random"}
+          >
             <p className="text-xl">Completely Random Photos [ /random ]</p>
             <p>
-              Photos from all categories and topics, shown randomly every time.
-              Totally unpredictable, always refreshing.
+              Want a surprise? This page gives you completely random photos
+              every time you visit. Perfect for creative sparks or mood boards.
             </p>
-          </div>
-          <div className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black">
+          </Link>
+          <Link
+            className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black"
+            to={"/search"}
+          >
             <p className="text-xl">Search Page (Default) [ /search ]</p>
             <p>
-              This is the page where users can type a keyword to search for
-              images. Until a keyword is entered, it remains a general search
-              page.
+              Start your search here. You can enter any keyword to find related
+              photos — from emotions to colors to abstract ideas.
             </p>
-          </div>
-          <div className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black">
+          </Link>
+          <Link
+            className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black"
+            to={`/search/${parameters.query}`}
+          >
             <p className="text-xl">Search Results Page [ /search/:slug ]</p>
             <p>
-              When a user performs a search, this page displays the actual
-              results. <br /> Example URLs: <br />[ /search/nature ] == photos
-              related to nature <br />[ /search/happiness ] == photos that match
-              the word “happiness”
+              After searching, this route shows the photos that match your
+              keyword.
+              <br /> Example URLs: <br />[ /search/nature ] == photos related to
+              nature <br />[ /search/happiness ] == photos that match the word
+              “happiness”
             </p>
-          </div>
-          <div className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black">
+          </Link>
+          <Link
+            className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black"
+            to={"/settings"}
+          >
             <p className="text-xl">Settings Page [ /settings ]</p>
             <p>
-              This page includes user or site settings like preferences, maybe
-              language or display options. Simple but important.
+              Customize your experience here. Change how things look or behave
+              based on your preferences.
             </p>
-          </div>
-          <div className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black">
+          </Link>
+          <Link
+            className="flex flex-col gap-y-2 border-y-2 p-3 border-black hover:text-white hover:bg-black"
+            to={"/NotFound"}
+          >
             <p className="text-xl">404 Page – Not Found [ /* ]</p>
             <p>
-              If a user goes to a route that doesn't exist, they will see a
-              “Page Not Found” message from your NotFound component.
+              Oops! If you typed the wrong link or followed a broken one, you’ll
+              land on this page letting you know the route doesn’t exist.
             </p>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
