@@ -7,7 +7,7 @@ const Pagination = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   return (
-    <div className="w-2/12 my-6 mx-auto flex justify-between font-semibold">
+    <div className="lg:w-2/12 w-6/12 my-6 mx-auto flex justify-between font-semibold">
       <button
         className="border-2 border-black py-2 px-3 hover:bg-black hover:text-white"
         onClick={() => {
