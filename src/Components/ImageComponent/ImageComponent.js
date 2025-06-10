@@ -16,7 +16,18 @@ const ImageComponent = ({ data }) => {
           {data.userName}
         </p>
       </a>
-      <img src={data.photoUrl} alt={data.photoAlt} className="w-full h-auto" />
+      <img
+        src={data.photoUrl}
+        alt={data.photoAlt}
+        className="w-full h-auto lg:block hidden"
+      />
+      <a href={data.userLink} className="w-full h-auto">
+        <img
+          src={data.photoUrl}
+          alt={data.photoAlt}
+          className="w-full h-auto lg:hidden block"
+        />
+      </a>
       <div className="absolute w-full bg-black h-full opacity-0 group-hover:opacity-60 transition-opacity lg:flex hidden"></div>
       <a
         className="absolute w-full h-full text-white hidden flex-col items-center justify-center gap-y-4 lg:group-hover:flex transition-transform"

@@ -6,13 +6,13 @@ const Settings = () => {
   const { setParameters, parameters, categories } = useContext(dataContext);
   return (
     <div className="w-full  flex font-semibold tracking-wider">
-      <div className="w-6/12 mx-auto  flex flex-col p-4 my-6">
+      <div className="lg:w-6/12 lg:mx-auto w-full flex flex-col p-4 my-6">
         <p className="text-3xl mx-auto mb-2">Settings</p>
-        <p className="text-2xl mx-auto capitalize mb-8">
+        <p className="text-2xl mx-auto capitalize mb-8 text-center lg:text-left">
           you can change all the parameters from here
         </p>
-        <div className="flex flex-wrap w-full justify-around gap-y-6">
-          <div className="w-5/12  flex flex-col">
+        <div className="flex lg:flex-wrap w-full lg:justify-around lg:flex-row gap-y-6 flex-col">
+          <div className="lg:w-5/12 w-10/12 mx-auto lg:m-0 flex flex-col">
             <div className="flex justify-between">
               <label htmlFor="query" className="p-2 border-black border-2">
                 Query
@@ -45,7 +45,7 @@ const Settings = () => {
               Go To Search
             </Link>
           </div>
-          <div className="w-5/12  flex flex-col">
+          <div className="lg:w-5/12 w-10/12 mx-auto lg:m-0 flex flex-col">
             <div className="flex justify-between">
               <label htmlFor="page" className="p-2 border-black border-2">
                 Page
@@ -78,7 +78,7 @@ const Settings = () => {
               Go To Home
             </Link>
           </div>
-          <div className="w-5/12  flex flex-col">
+          <div className="lg:w-5/12 w-10/12 mx-auto lg:m-0 flex flex-col">
             <div className="flex justify-between">
               <label htmlFor="perPage" className="p-2 border-black border-2">
                 perPage
@@ -112,7 +112,7 @@ const Settings = () => {
               Go To Home
             </Link>
           </div>
-          <div className="w-5/12  flex flex-col">
+          <div className="lg:w-5/12 w-10/12 mx-auto lg:m-0 flex flex-col">
             <div className="flex justify-between">
               <label
                 for="Order"
@@ -150,7 +150,7 @@ const Settings = () => {
               Go To Home
             </Link>
           </div>
-          <div className="w-11/12 mx-auto  flex flex-col">
+          <div className="lg:w-5/12 w-10/12 mx-auto lg:m-0 flex flex-col">
             <div className="flex justify-between">
               <label
                 for="topic"
