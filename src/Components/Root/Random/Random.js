@@ -6,7 +6,7 @@ const Random = () => {
   const value = useContext(dataContext);
 
   return (
-    <div className="w-full columns-3 gap-3 p-2">
+    <div className="w-full lg:columns-3 gap-3 p-2 flex flex-col lg:block">
       {value.photos.randomPhotos.map((elem, index) => {
         return <ImageComponent data={elem} key={index} />;
       })}

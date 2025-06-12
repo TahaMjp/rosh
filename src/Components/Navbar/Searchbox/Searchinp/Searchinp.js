@@ -16,12 +16,12 @@ const Searchinp = () => {
     }
   };
   return (
-    <div className="w-7/12">
+    <div className="lg:w-7/12 w-10/12">
       <input
         type="text"
         id="SearchInp"
         name="SearchInp"
-        className="w-11/12 p-1 border-2 border-black font-semibold tracking-wide"
+        className="lg:w-11/12 w-9/12 p-1 border-2 border-black font-semibold tracking-wide"
         placeholder="Search ..."
         onKeyDown={(e) => {
           if (e.key === "Enter") {
