@@ -124,12 +124,18 @@ const Settings = () => {
                 id="Order"
                 class="block p-2 border-y-2 border-black grow "
               >
-                <option selected value="latest">
+                <option selected value="latest" className="p-2 font-semibold">
                   Latest
                 </option>
-                <option value="oldest">Oldest</option>
-                <option value="popular">Popular</option>
-                <option value="relevant">Relevant</option>
+                <option value="oldest" className="p-2 font-semibold">
+                  Oldest
+                </option>
+                <option value="popular" className="p-2 font-semibold">
+                  Popular
+                </option>
+                <option value="relevant" className="p-2 font-semibold">
+                  Relevant
+                </option>
               </select>
               <button
                 className="border-2 border-black hover:text-white hover:bg-black px-3"
@@ -162,12 +168,21 @@ const Settings = () => {
                 id="topic"
                 class="block p-2 border-y-2 border-black grow "
               >
-                <option selected disabled value={parameters.topic}>
+                <option
+                  selected
+                  disabled
+                  value={parameters.topic}
+                  className="p-2 font-semibold"
+                >
                   {parameters.topic === "" ? "empty" : parameters.topic}
                 </option>
                 {categories.map((elem, index) => {
                   return (
-                    <option value={elem} key={index}>
+                    <option
+                      value={elem}
+                      key={index}
+                      className="p-2 font-semibold "
+                    >
                       {elem}
                     </option>
                   );

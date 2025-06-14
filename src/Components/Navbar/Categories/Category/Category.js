@@ -3,7 +3,7 @@ import { dataContext } from "../../../App/App";
 import { useNavigate } from "react-router-dom";
 
 const Category = (category) => {
-  const { setParameters } = useContext(dataContext);
+  const { setParameters, goTop } = useContext(dataContext);
   const Navigate = useNavigate();
 
   return (
@@ -12,6 +12,7 @@ const Category = (category) => {
       onClick={() => {
         setParameters((prev) => ({ ...prev, topic: category.category }));
         Navigate(`/topic/${category.category}`);
+        goTop();
       }}
     >
       {category.category}

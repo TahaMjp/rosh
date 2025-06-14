@@ -2,10 +2,7 @@ import { useContext } from "react";
 import { dataContext } from "../App/App";
 
 const Pagination = () => {
-  const { setParameters, parameters } = useContext(dataContext);
-  const goTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const { setParameters, parameters, goTop } = useContext(dataContext);
   return (
     <div className="lg:w-2/12 w-6/12 my-6 mx-auto flex justify-between font-semibold">
       <button

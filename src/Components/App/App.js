@@ -165,9 +165,19 @@ const App = () => {
     }
   }, [parameters.page, parameters.topic, parameters.perPage, parameters.query]);
 
+  const goTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <dataContext.Provider
-      value={{ categories, photos, setParameters, parameters, fetchRandom }}
+      value={{
+        categories,
+        photos,
+        setParameters,
+        parameters,
+        fetchRandom,
+        goTop,
+      }}
     >
       <Wrapper />
     </dataContext.Provider>
